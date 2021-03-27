@@ -24,24 +24,24 @@ router.post("/api/workouts", (req, res) => {
 
 //PUT Request to add to a workout
 
-router.put("/api/workouts/:id", (req, res) => {
-    console.log(req.body);
-    console.log(req.params);
-    Workout.findOneAndUpdate(
-        { 
-            _id: req.params.id 
-        },
-        {
-            $inc: { durationTotal: req.body.duration },
-            $push: { exercises: req.body }
-        })
-        .then(function(results){
-            res.json(results)
-        })
-        .catch(function (err){
-            console.log(err)
-        })
-});
+// router.put("/api/workouts/:id", (req, res) => {
+//     console.log(req.body);
+//     console.log(req.params);
+//     Workout.findOneAndUpdate(
+//         { 
+//             _id: req.params.id 
+//         },
+//         {
+//             $inc: { durationTotal: req.body.duration },
+//             $push: { exercises: req.body }
+//         })
+//         .then(function(results){
+//             res.json(results)
+//         })
+//         .catch(function (err){
+//             console.log(err)
+//         })
+// });
 
 
 // GET Request for all workouts
