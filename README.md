@@ -1,4 +1,4 @@
-# EatDaBurger-Handlebars
+# Fitness-Tracker-DB
 
 Fitness Tracker app built using MongoDB.
 
@@ -11,7 +11,7 @@ Fitness Tracker allows users to create a Workout and then add exercises to that 
 
 * App Screenshot:
 
-![App Screenshot](assets/img/screenshot.gif)
+![App Screenshot](assets/screenshot.png)
 
 ### User Story
 
