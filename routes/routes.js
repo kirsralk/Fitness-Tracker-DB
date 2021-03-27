@@ -16,7 +16,7 @@ router.get("/stats", function(req, res) {
 
 // -------------------------------------------------------API Routes-------------------------------------------------------------
 
-//New Workout
+//POST Request for New Workout
 router.post("/api/workouts", (req, res) => {
     Workout.create({
         durationTotal: 0
@@ -24,7 +24,7 @@ router.post("/api/workouts", (req, res) => {
     console.log("Workout created!");
 });
 
-//Add to a workout
+//POST Request to add to a workout
 
 router.put("/api/workouts/:id", (req, res) => {
     console.log(req.body);
@@ -54,6 +54,17 @@ router.get("/api/workouts", (req, res) => {
         .catch(function (err) {
             console.log(err)
         })
+});
+
+// GET Request for /range endpoint
+router.get("/api/workouts/range", (req, res) => {
+    Workout.find({})
+    .then(function (workouts) {
+        res.json(workouts)
+    })
+    .catch(function (err) {
+        console.log(err)
+    })
 });
 
 module.exports = router;
