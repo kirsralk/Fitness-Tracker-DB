@@ -18,27 +18,42 @@ router.get("/stats", function(req, res) {
 
 //New Workout
 router.post("/api/workouts", (req, res) => {
-    Workout.create({});
+    Workout.create({
+        durationTotal: 0
+    });
     console.log("Workout created!");
 });
 
 //Add to a workout
+
 router.put("/api/workouts/:id", (req, res) => {
     console.log(req.body);
     console.log(req.params);
     Workout.findOneAndUpdate(
-        {
-            _id: mongojs.ObjectId(req.params.id)
-        },
         { 
+            _id: req.params.id 
+        },
+        {
+            $inc: { durationTotal: req.body.duration },
             $push: { exercises: req.body }
-        }
-    )
+        })
+        .then(function(results){
+            res.json(results)
+        })
+        .catch(function (err){
+            console.log(err)
+        })
 });
 
-
-
-
-
+// GET Request for all workouts
+router.get("/api/workouts", (req, res) => {
+    Workout.find({})
+        .then(function (workouts) {
+            res.json(workouts)
+        })
+        .catch(function (err) {
+            console.log(err)
+        })
+});
 
 module.exports = router;
