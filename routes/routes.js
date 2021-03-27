@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const path = require("path");
-const mongojs = require("mongojs");
+// const db = require("../models");
 const Workout = require("../models/workout");
 
 // --------------------------------------------------------HTML Routes----------------------------------------------------------
@@ -18,13 +18,11 @@ router.get("/stats", function(req, res) {
 
 //POST Request for New Workout
 router.post("/api/workouts", (req, res) => {
-    Workout.create({
-        durationTotal: 0
-    });
+    Workout.create({});
     console.log("Workout created!");
 });
 
-//POST Request to add to a workout
+//PUT Request to add to a workout
 
 router.put("/api/workouts/:id", (req, res) => {
     console.log(req.body);
@@ -44,6 +42,7 @@ router.put("/api/workouts/:id", (req, res) => {
             console.log(err)
         })
 });
+
 
 // GET Request for all workouts
 router.get("/api/workouts", (req, res) => {

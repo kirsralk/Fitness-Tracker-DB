@@ -6,8 +6,8 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
-// Require Models
-const db = require("./models/workout");
+// // Require Models
+// const db = require("./models/workout");
 
 // Set up Express to handle data parsing
 app.use(express.urlencoded({ extended: true }));
